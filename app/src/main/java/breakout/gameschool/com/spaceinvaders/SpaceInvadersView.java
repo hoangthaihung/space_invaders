@@ -151,6 +151,13 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         }
 
         // build an army of invaders
+        numInvaders = 0;
+        for (int column = 0; column < 6; column++){
+            for (int row = 0; row < 5; row++){
+                invaders[numInvaders] = new Invader(context, row, column, screenX, screenY);
+                numInvaders++;
+            }
+        }
 
         // build the shelters
     }
@@ -245,6 +252,11 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
             // draw the bricks if visible
 
             // draw the players bullet if active
+            if (bullet.getStatus()){
+                canvas.drawRect(bullet.getRect(),paint);
+            }
+
+            // draw the invaders bullets
 
             // draw all the invader's bullets if active
             for (int i = 0; i < invadersBullets.length; i++) {
